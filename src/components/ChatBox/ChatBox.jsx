@@ -12,8 +12,9 @@ import ChatContainer from './ChatContainer';
 import { addMessageApi, host } from '../../apis/restapis';
 import { io } from 'socket.io-client';
 import { setMessageArr } from '../../store/messageSlice';
-import { useNavigate } from 'react-router-dom';
 const CryptoJS = require("crypto-js");
+
+
 const ChatBox = (props) => {
     const socket = useRef(null);
     const { avatarPath, userName } = props.contact;
