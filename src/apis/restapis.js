@@ -1,4 +1,4 @@
-export const host = 'https://localhost:3001'
+export const host = 'https://localhost:3001/'
 
 export const registerApi = `${host}/api/register`;
 export const loginApi = `${host}/api/login`;
