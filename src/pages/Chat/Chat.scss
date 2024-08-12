@@ -1,7 +1,7 @@
 .chat{
     background: #131324;
     min-height: calc(100vh - 11vh); /* Adjust height based on header */
-    padding: 0.5rem 2rem 2rem;
+    padding: 0.5rem 2rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    // margin-top: 1.5rem;
+    margin-top: 1.5rem;
    
 
     .chat-container{
@@ -55,7 +55,7 @@
 
     .chat{
 
-        margin-top: 1rem;
+        padding: 0.3rem 1rem 0.3rem;
 
         .chat-container{
 
