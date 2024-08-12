@@ -1,6 +1,6 @@
 .chat{
     background: #131324;
-    min-height: 85vh;
+    min-height: calc(100vh - 11vh); /* Adjust height based on header */
     padding: 0.5rem 2rem 2rem;
     display: flex;
     align-items: center;
@@ -10,6 +10,7 @@
     left: 0;
     bottom: 0;
     right: 0;
+    // margin-top: 1.5rem;
    
 
     .chat-container{
@@ -23,7 +24,7 @@
 
         .chat-box-wrapper{
             width: 75%;
-            height: 85.5vh;
+            // height: 85.5vh;
             background: #0f011c;
             border: solid 2px #7838b4;
             border-radius: 0.5rem;
@@ -49,3 +50,24 @@
 
     }
 }
+
+@media only screen and (max-width : 450px){
+    .chat{
+
+        .chat-container{
+
+            .contacts{
+                width: 35%;
+            }
+
+            .chat-box-wrapper{
+                width: 65%;
+            }
+
+        }
+
+    }
+}
+
+
+

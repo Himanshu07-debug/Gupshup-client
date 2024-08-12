@@ -58,8 +58,7 @@ const Contacts = () => {
                             contactList.length === 0
                             ?
                             <div className="loading">
-                                <h3>Your Contact List is Empty</h3>
-                                <span>Add Your Friends!!</span>
+                                <h3>Empty Contact List</h3>
                             </div>
                             :
                             contactList.map((item) => {
