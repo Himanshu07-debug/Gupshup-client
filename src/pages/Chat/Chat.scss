@@ -55,6 +55,8 @@
 
     .chat{
 
+        min-height: calc(100vh - 8vh); /* Adjust height based on header */
+
         padding: 0.3rem 1rem 0.3rem;
 
         .chat-container{
