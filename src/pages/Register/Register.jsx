@@ -73,7 +73,7 @@ const Register = () => {
 
         if(handleValidation()){
             try{
-                console.log(userData);
+                // console.log(userData);
                 const response = await axios.post(registerApi, userData);
                 if(response.status === 201){
                     toast.success('Registration Successfull!!', toastOptions);

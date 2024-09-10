@@ -28,7 +28,7 @@ const Contacts = () => {
             setIsLoading(false);
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     }
 
@@ -36,8 +36,8 @@ const Contacts = () => {
         getAllContacts();
     }, [contactList]);
 
-    console.log(contactList);
-    console.log(onlineContacts);
+    // console.log(contactList);
+    // console.log(onlineContacts);
 
 
     const handleContactChange = (item) => {

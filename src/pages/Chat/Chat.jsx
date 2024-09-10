@@ -21,7 +21,7 @@ const Chat = () => {
     if (CurrentUser) {
         socket.current = io(`${host}`);
         socket.current.emit('add-user', CurrentUser._id);
-        console.log(socket);
+        // console.log(socket);
     }
 }, []);
 

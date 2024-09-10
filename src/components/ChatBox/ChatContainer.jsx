@@ -39,8 +39,8 @@ const ChatContainer = () => {
                     // Update the text field with the decrypted message
                     message.message.message.text = decryptedMessage;
                     
-                    console.log(message.message);
-                    console.log(decryptedMessage);
+                    // console.log(message.message);
+                    // console.log(decryptedMessage);
                 });
             
     
@@ -71,7 +71,7 @@ const ChatContainer = () => {
                     <div className="messages">
                         {
                             messageArr.map((message) => {
-                                console.log(message.fromSelf) ;
+                                // console.log(message.fromSelf) ;
                                 return(
                                     <div className={message.fromSelf ? "message sended" : "message received"} key={message._id} ref={scrollRef}>
                                     <p>{message.message.message.text}</p>

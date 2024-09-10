@@ -32,7 +32,7 @@ const ChatBox = (props) => {
         if (CurrentUser) {
             socket.current = io(`${host}`);
             socket.current.emit('add-user', CurrentUser._id);
-            console.log(socket);
+            // console.log(socket);
         }
     }, []);
 
@@ -48,12 +48,12 @@ const ChatBox = (props) => {
 
 
 
-                console.log('Encrypted:', ciphertext);
+                // console.log('Encrypted:', ciphertext);
 
                 const token1 = sessionStorage.getItem('accessToken'); 
                 const token = token1 && token1.split(' ')[1];
-                console.log("MY TOKEN");
-                console.log(token)
+                // console.log("MY TOKEN");
+                // console.log(token)
 
                 const response = await axios.post(addMessageApi, {
                     from: CurrentUser._id,

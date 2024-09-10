@@ -58,7 +58,7 @@ const SearchBar = () => {
         try {
 
             const response = await axios.put(`${addContactApi}${user._id}/${contactId}`);
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 localStorage.setItem('user-data', JSON.stringify(response.data));
                 toast.success(`${userName} added to contacts.`, toastOptions);
@@ -87,7 +87,7 @@ const SearchBar = () => {
 
     OutSideClickHandler(modalRef);
 
-    console.log(user);
+    // console.log(user);
     return (
         <div className='search-bar'>
             <div className="search-input">
