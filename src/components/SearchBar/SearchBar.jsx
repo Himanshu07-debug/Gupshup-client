@@ -35,23 +35,23 @@ const SearchBar = () => {
         setSearchKeyword(e.target.value);
     }
 
-    const search = async () => {
-        try {
-            const response = await axios.get(`${searchApi}${searchKeyword}`);
-            setSearchedResult(response.data);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-
     useEffect(() => {
-        if (searchKeyword.length >= 3) {
-            search();
-        }
-        else {
+        if (searchKeyword.length < 3) {
             setSearchedResult([]);
+            return;
         }
+
+        const debounceTimer = setTimeout(async () => {
+            try {
+                const response = await axios.get(`${searchApi}${searchKeyword}`);
+                setSearchedResult(response.data);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }, 300); // 300ms debounce delay
+
+        return () => clearTimeout(debounceTimer);
     }, [searchKeyword]);
 
     const handleAddContact = async (contactId, userName) => {
@@ -61,7 +61,11 @@ const SearchBar = () => {
             // console.log(response);
             if (response.status === 200) {
                 localStorage.setItem('user-data', JSON.stringify(response.data));
+                setUser(response.data);
                 toast.success(`${userName} added to contacts.`, toastOptions);
+                
+                // Dispatch custom event to notify Contacts component
+                window.dispatchEvent(new CustomEvent('contactAdded'));
             }
         }catch (err) {
             if(err.response){
