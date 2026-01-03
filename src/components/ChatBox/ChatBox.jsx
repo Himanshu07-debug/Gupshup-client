@@ -52,6 +52,21 @@ const ChatBox = (props) => {
 
                 const token1 = sessionStorage.getItem('accessToken'); 
                 const token = token1 && token1.split(' ')[1];
+                
+                if (!token) {
+                    const toastOptions = {  
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                    toast.error("Please login again", toastOptions);
+                    return;
+                }
                 // console.log("MY TOKEN");
                 // console.log(token)
 
@@ -78,8 +93,6 @@ const ChatBox = (props) => {
                 dispatch(setMessageArr(msg));
             }
             catch (err) {
-
-                // console.log(err);
                 const toastOptions = {  
                     position: "top-right",
                     autoClose: 5000,
@@ -90,7 +103,12 @@ const ChatBox = (props) => {
                     progress: undefined,
                     theme: "dark",
                 }
-                toast.warn("session is expired login again", toastOptions);
+                
+                if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+                    toast.error("Session expired. Please login again", toastOptions);
+                } else {
+                    toast.error(err.response?.data?.msg || "Failed to send message. Please try again", toastOptions);
+                }
             }
         }
     }
