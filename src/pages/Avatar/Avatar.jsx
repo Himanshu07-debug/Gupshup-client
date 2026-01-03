@@ -31,25 +31,25 @@ const Avatar = () => {
     setUser(userData);
   }, [])
 
-  const getAvatar = () => {
-    let min = 5000;
-    let max = 100000;
-    const random = Math.round((Math.random() * (max - min) + min));
-    // const imgUrl = api + JSON.stringify(random) + '.png';
-    const imgUrl = 'https://avatar.iran.liara.run/public';
-    console.log(imgUrl);
-    return imgUrl;
-  }
-
   useEffect(() => {
-    for (let i = 0; i < 3; i++) {
-      const imgUrl = getAvatar();
-      setAvatarArr((prevArrData) => {
-        return [...prevArrData, imgUrl];
-      })
+    if (user.userName) {
+      const getAvatar = (index) => {
+        // Generate unique avatars using dicebear.com with different styles
+        const styles = ['avataaars', 'micah', 'open-peeps'];
+        const style = styles[index % styles.length];
+        const seed = `${user.userName}-${index}-${user._id || Date.now()}`;
+        const imgUrl = `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=b6e3f4,c0aede,d1d4f9`;
+        return imgUrl;
+      };
+
+      const newAvatars = [];
+      for (let i = 0; i < 3; i++) {
+        const imgUrl = getAvatar(i);
+        newAvatars.push(imgUrl);
+      }
+      setAvatarArr(newAvatars);
     }
-    getAvatar();
-  }, []);
+  }, [user]);
 
   const handleSetAvatar = async (e) => {
     try{
