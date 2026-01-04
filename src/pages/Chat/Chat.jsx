@@ -1,13 +1,13 @@
 import React, { useRef, useEffect} from 'react'
-import Header from '../../components/Header/Header'
+import Header from '../../components/Header/Header.jsx'
 import './Chat.scss'
 import Contacts from '../../components/Contacts/Contacts.jsx'
-import ChatBox from '../../components/ChatBox/ChatBox'
-import Welcome from '../../components/Welcome/Welcome'
+import ChatBox from '../../components/ChatBox/ChatBox.jsx'
+import Welcome from '../../components/Welcome/Welcome.jsx'
 import { useSelector, useDispatch } from 'react-redux'
-import { setOnlineContacts } from '../../store/contactSlice'
+import { setOnlineContacts } from '../../store/contactSlice.js'
 import { io } from 'socket.io-client';
-import { host } from '../../apis/restapis'
+import { host } from '../../apis/restapis.js'
 
 
 const Chat = () => {
@@ -23,6 +23,12 @@ const Chat = () => {
         socket.current.emit('add-user', CurrentUser._id);
         // console.log(socket);
     }
+    
+    return () => {
+        if (socket.current) {
+            socket.current.disconnect();
+        }
+    };
 }, []);
 
   useEffect(() => {
